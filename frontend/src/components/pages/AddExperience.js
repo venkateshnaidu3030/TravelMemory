@@ -17,12 +17,23 @@ export default function AddExperience() {
             featured: false,
             shortDescription: ""
     })
-    const submitForm = () => {
-        setLoading(true);
-        console.log(formdata)
-        axios.post(`${baseUrl}/trip`, formdata)
-        setLoading(false)
-    }
+    const submitForm = async () => {
+  try {
+    setLoading(true);
+    console.log(formdata);
+
+    const response = await axios.post(`${baseUrl}/trip`, formdata);
+
+    console.log(response.data);
+    alert("Trip added successfully!");
+
+    setLoading(false);
+  } catch (error) {
+    console.error(error);
+    alert("Error submitting trip");
+    setLoading(false);
+  }
+};
 
     if(loading==true){
       return(
@@ -189,8 +200,10 @@ export default function AddExperience() {
             ></textarea>
           </div>
           <div class="mb-3" style={{ textAlign: "center"}}>
-            <button type="submit" class="btn btn-primary" onClick={submitForm}>Submit</button>
-          </div>
+  <button type="button" className="btn btn-primary" onClick={submitForm}>
+    Submit
+  </button>
+</div>
         </div>
       );
     }
