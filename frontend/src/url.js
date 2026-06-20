@@ -1,1 +1,1 @@
-export const baseUrl = process.env.REACT_APP_BACKEND_URL || "http://98.81.212.148:3000";
+export const baseUrl = process.env.REACT_APP_BACKEND_URL || "http://34.234.78.57:3000";
